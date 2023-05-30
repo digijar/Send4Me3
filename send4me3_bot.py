@@ -1,4 +1,6 @@
 import logging
+from dotenv import load_dotenv
+load_dotenv('telegram_bot.env')
 
 from telegram import __version__ as TG_VER
 
@@ -159,7 +161,7 @@ async def help_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 def main() -> None:
     """Run bot."""
     # Create the Application and pass it your bot's token.
-    application = Application.builder().token("6166289668:AAFDhx889y9dnePhBpFv8eol7UPEU7eiqGQ").build()
+    application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("poll", poll))
     application.add_handler(CommandHandler("quiz", quiz))
